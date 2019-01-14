@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+  <title>Clock</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Montserratfont.css">
+</head>
+
+<body>
+
+  <div class="main-wrapper">
+
+    <div class="opt-wrapper">
+      <input type="radio" id="clock-btn" name="clock-opt" checked onclick="newOption(); clock.start();" />
+      <label for="clock-btn">CLOCK</label>
+
+      <input type="radio" id="stopwatch-btn" name="clock-opt" onclick="newOption(); document.getElementById('spw_btn_wrapper').classList.remove('hidden'); document.getElementById('lap-wrapper').classList.remove('hidden');" />
+      <label for="stopwatch-btn">STOPWATCH</label>
+
+      <input type="radio" id="timer-btn" name="clock-opt" onclick="newOption(); document.getElementById('timer_btn_wrapper').classList.remove('hidden');" />
+      <label for="timer-btn">COUNTDOWN TIMER</label>
+
+      <input type="radio" id="alarm-btn" name="clock-opt" onclick="newOption(); document.getElementById('alarm_btn_wrapper').classList.remove('hidden'); startstop.stop();"/>
+      <label for="alarm-btn">ALARM</label>
+
+      <div class="hidden" id="spw_btn_wrapper">
+        <button onclick="stopwatch.start_stop();">START/STOP</button>
+        <button onclick="stopwatch.lap();">LAP</button>
+        <button onclick="stopwatch.reset();">RESET</button>
+      </div>
+
+      <div class="hidden" id="timer_btn_wrapper">
+        <input id="timer_h" type="number" min="0" placeholder="HH" class="timer-input" />
+        <input id="timer_m" type="number" min="0" placeholder="MM" class="timer-input" />
+        <input id="timer_s" type="number" min="0" placeholder="SS" class="timer-input" />
+        <button onclick="timer.start();">START</button>
+        <button onclick="timer.stop();">STOP</button>
+        <button onclick="timer.stop(); timer.end();">RESET</button>
+      </div>
+
+      <div class="hidden" id="alarm_btn_wrapper">
+        <select id="hours"></select>
+        <select id="minutes"></select>
+       
+        <select id="ampm">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        <button id="snooze" class="hidden">Snooze</button>
+        <button id="startstop">Set Alarm</button>
+
+      </div>
+
+    </div>
+
+    <div id="lap-wrapper" class="hidden">
+      <p id="laps">LAPS</p>
+    </div>
+    
+    <div class="clock-wrapper">
+      <p id="clock">00:00:00</p>
+    </div>
+    
+  </div>
+    <script  src="js/index.js"></script>
+    <script  src="js/alarm.js"></script>
+</body>
+</html>
